@@ -29,8 +29,7 @@ int main()
         string evento = "{ \"sensor  \":\"espira\", \"sensorID \"\": \"\"" + to_string(sensorID) + "\", \"interseccion\":" + to_string(interseccion) + ", \"vehiculosContados\":" + to_string(vehiculosContados) + ", \"intervaloSegundos\":" + to_string(intervaloSegundos) + ", \"timestamp_inicio\": " + to_string(chrono::system_clock::now().time_since_epoch().count()) + ", \"timestamp_fin\": " + to_string(chrono::system_clock::now().time_since_epoch().count() + intervaloSegundos * 1000000000) + " }";
 
         zmq::message_t msg(evento.begin(), evento.end());
-        socket.send(msg);
-
+        socket.send(msg, zmq::send_flags::none);
         cout << "Evento detectado y enviado" << evento << endl;
 
         std::this_thread::sleep_for(std::chrono::seconds(5));

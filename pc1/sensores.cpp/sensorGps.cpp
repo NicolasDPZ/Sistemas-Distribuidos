@@ -26,8 +26,7 @@ int main()
         string evento = "{ \"sensor  \":\"gps\", \"sensorID \"\": \"\"" + to_string(sensorID) + "\", \"nivelCongestion\":\"" + nivelCongestion + "\", \"VelocidadPromedio\":" + to_string(VelocidadPromedio) + ", \"timestamp\": " + to_string(chrono::system_clock::now().time_since_epoch().count()) + " }";
 
         zmq::message_t msg(evento.begin(), evento.end());
-        socket.send(msg);
-
+        socket.send(msg, zmq::send_flags::none);
         cout << "Evento detectado y enviado" << evento << endl;
 
         std::this_thread::sleep_for(std::chrono::seconds(5));

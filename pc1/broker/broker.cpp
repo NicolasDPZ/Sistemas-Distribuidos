@@ -1,25 +1,28 @@
-#include <iostream>
-#include <stdio.h>
 #include <zmq.hpp>
+#include <iostream>
 
-int main(){
-    zmq:: context_t context (1);
+int main() {
 
-    zmq::socket_t frontend (context, ZMQ_ROUTER);
+    zmq::context_t context(1);
+
+    zmq::socket_t frontend(context, ZMQ_SUB);
     frontend.bind("tcp://*:5555");
-    frontend.setsockopt(ZMQ_SUBSCRIBE, "", 0);
+
+    frontend.set(zmq::sockopt::subscribe, "");
 
     zmq::socket_t backend(context, ZMQ_PUB);
     backend.bind("tcp://*:5556");
 
-    std::cout << "Broker iniciado..." << std::endl;
-
-    while(true) {
+    while (true) {
 
         zmq::message_t message;
 
-        frontend.recv(message);
+        auto result = frontend.recv(message, zmq::recv_flags::none);
 
-        backend.send(message);
+        if (result) {
+            backend.send(message, zmq::send_flags::none);
+        }
+
     }
+
 }
