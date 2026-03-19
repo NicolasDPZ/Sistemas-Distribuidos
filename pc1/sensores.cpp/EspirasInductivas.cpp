@@ -10,7 +10,6 @@
 
 using namespace std;
 
-// los sensores deben tener el nombre antes de  es decir sensor ESP-id
 
 string obtenerTimestampISO()
 {
@@ -58,7 +57,7 @@ int main()
         string timestamp_inicio = obtenerTimestampISO();
         string timestamp_fin = obtenerTimestampISOConOffset(intervaloSegundos);
 
-        string evento = "{ \"sensor  \":\"espira\", \"sensorID \": \"ESP-" + to_string(sensorID) + "\", \"interseccion\":" + to_string(interseccion) + ", \"vehiculosContados\":" + to_string(vehiculosContados) + ", \"intervaloSegundos\":" + to_string(intervaloSegundos) + ", \"timestamp_inicio\": " + timestamp_inicio + ", \"timestamp_fin\": " + timestamp_fin + " }";
+        string evento = "{ \"sensor\":\"espira\", \"sensorID\": \"ESP-" + to_string(sensorID) + "\", \"interseccion\":" + to_string(interseccion) + ", \"vehiculosContados\":" + to_string(vehiculosContados) + ", \"intervaloSegundos\":" + to_string(intervaloSegundos) + ", \"timestamp_inicio\": " + timestamp_inicio + ", \"timestamp_fin\": " + timestamp_fin + " }";
 
         zmq::message_t msg(evento.begin(), evento.end());
         socket.send(msg, zmq::send_flags::none);
