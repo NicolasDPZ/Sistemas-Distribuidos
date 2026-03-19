@@ -17,13 +17,15 @@ int main()
 
     socket.connect("tcp://localhost:5555");
 
+    srand(time(NULL));
+
     while (true)
     {
-        int sensorID;
+        int sensorID ;
         string nivelCongestion;
         int VelocidadPromedio;
 
-        string evento = "{ \"sensor  \":\"gps\", \"sensorID \"\": \"\"" + to_string(sensorID) + "\", \"nivelCongestion\":\"" + nivelCongestion + "\", \"VelocidadPromedio\":" + to_string(VelocidadPromedio) + ", \"timestamp\": " + to_string(chrono::system_clock::now().time_since_epoch().count()) + " }";
+        string evento = "{ \"sensor  \":\"gps\", \"sensorID \": \"GPS-" + to_string(sensorID) + "\", \"nivelCongestion\":\"" + nivelCongestion + "\", \"VelocidadPromedio\":" + to_string(VelocidadPromedio) + ", \"timestamp\": " + to_string(chrono::system_clock::now().time_since_epoch().count()) + " }";
 
         zmq::message_t msg(evento.begin(), evento.end());
         socket.send(msg, zmq::send_flags::none);

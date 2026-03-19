@@ -18,7 +18,7 @@ int main()
 
     socket.connect("tcp://localhost:5555");
 
-    srand(time(0));
+    srand(time(NULL));
 
     while (true)
     {
