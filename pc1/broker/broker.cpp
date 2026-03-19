@@ -1,5 +1,6 @@
 #include <zmq.hpp>
 #include <iostream>
+using namespace std;
 
 int main() {
 
@@ -12,6 +13,8 @@ int main() {
 
     zmq::socket_t backend(context, ZMQ_PUB);
     backend.bind("tcp://*:5556");
+
+    cout << "Broker iniciado y conectado" << endl;
 
     while (true) {
 

@@ -1,6 +1,7 @@
 #include <zmq.hpp>
 #include <iostream>
 #include <string>
+using namespace std;
 
 int main(){
 
@@ -10,6 +11,7 @@ int main(){
     socket.connect("tcp://localhost:5556");
 
     socket.set(zmq::sockopt::subscribe, "");
+    cout << "Sensor de análisis conectado al broker, esperando datos..." << endl;
 
     while(true){
 
@@ -19,7 +21,7 @@ int main(){
 
         if(result){
             std::string texto(static_cast<char*>(msg.data()), msg.size());
-            std::cout << "Dato recibido: " << texto << std::endl;
+            cout << "Dato recibido: " << texto << std::endl;
         }
     }
 
