@@ -9,7 +9,7 @@ int main(){
     zmq::context_t context(1);
     zmq::socket_t socket(context, ZMQ_SUB);
 
-    socket.connect("tcp://localhost:5556");
+    socket.connect("tcp://localhost:5556");   //10.43.100.43
 
     socket.set(zmq::sockopt::subscribe, "");
     cout <<"analitica prendido";
