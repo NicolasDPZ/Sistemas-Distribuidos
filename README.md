@@ -1,3 +1,6 @@
 ### Compilar con g++ ... -lzmq -o ... depensiendo del archivo
 ### ejecutar con ./...
 ### Se debe tener g++ y sudo apt install libzmq3-dev
+
+# esta es la version localhost
+
