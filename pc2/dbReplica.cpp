@@ -9,7 +9,7 @@ int main() {
     zmq::socket_t receiver(context, ZMQ_PULL);
     receiver.bind("tcp://*:5559");
 
-    ofstream archivo("backup.txt", ios::app);
+    ofstream archivo("backup.json", ios::app);
     cout << "BD réplica esperando datos..." << endl;
 
     while (true) {

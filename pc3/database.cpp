@@ -9,7 +9,7 @@ int main() {
     zmq::socket_t receiver(context, ZMQ_PULL);
     receiver.connect("tcp://10.43.100.176:5558");
 
-    ofstream archivo("database.txt", ios::app);
+    ofstream archivo("database.json", ios::app);
     cout << "BD principal conectada a PC2, esperando datos..." << endl;
 
     while (true) {
