@@ -31,17 +31,23 @@ int main() {
     while (true) {
         for (int f = 0; f < 4; f++) {
             for (int c = 1; c <= columnas; c++) {
-                string sensorID     = "CAM-" + filas[f] + to_string(c);
+                string sensorID     = "GPS-" + filas[f] + to_string(c);
                 string interseccion = "INT-" + filas[f] + to_string(c);
-                int volumen         = rand() % 20;
-                int velocidad       = rand() % 50;
+                int velocidad       = rand() % 80;
+                int densidad        = rand() % 50;
+
+                string nivel;
+                if (velocidad < 10)       nivel = "ALTA";
+                else if (velocidad <= 39) nivel = "NORMAL";
+                else                      nivel = "BAJA";
 
                 string evento = "{"
                     "\"sensor_id\":\"" + sensorID + "\","
-                    "\"tipo_sensor\":\"camara\","
+                    "\"tipo_sensor\":\"gps\","
                     "\"interseccion\":\"" + interseccion + "\","
-                    "\"volumen\":" + to_string(volumen) + ","
+                    "\"nivel_congestion\":\"" + nivel + "\","
                     "\"velocidad\":" + to_string(velocidad) + ","
+                    "\"densidad\":" + to_string(densidad) + ","
                     "\"timestamp\":\"" + obtenerTimestamp() + "\""
                     "}";
 
