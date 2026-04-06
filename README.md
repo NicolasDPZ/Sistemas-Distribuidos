@@ -2,5 +2,6 @@
 ### ejecutar con ./...
 ### Se debe tener g++ y sudo apt install libzmq3-dev
 
-# esta es la version localhost
+## matriz 4x4 es decir la ciudad es de 16 intersecciones
+
 
