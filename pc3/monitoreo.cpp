@@ -36,7 +36,7 @@ int main() {
 
 
         } else if (opcion == 3) {
-            mensaje = "{\"tipo\":\"REGLAS_INTERSECCIONES\"}";
+            mensaje = "{\"tipo\":\"VER_REGLAS\"}";
                 
         } else {
             cout << "Opcion invalida." << endl;

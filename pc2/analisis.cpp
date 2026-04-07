@@ -83,8 +83,7 @@ int main()
             string texto(static_cast<char *>(msg.data()), msg.size());
             cout << "\n[EVENTO] " << texto << endl;
 
-            int intNum = extraerValorInt(texto, "interseccion");
-            string interseccion = "INT-" + to_string(intNum);
+            string interseccion = extraerValorString(texto, "interseccion");
             int volumen = extraerValorInt(texto, "volumen");
             int velocidad = extraerValorInt(texto, "velocidad");
             int vehiculos = extraerValorInt(texto, "vehiculosContados");
@@ -163,16 +162,15 @@ int main()
             {
                 respuesta = "{\"ok\":true,\"mensaje\":\"ciudad operando con 16 intersecciones\"}";
             }
-            else if (tipo == "VER_REGLAS")
-            {
+            else if (tipo == "VER_REGLAS") {
                 respuesta = "{"
-                            "\"reglas\":{"
-                            "\"NORMAL\":\"Q < 5 AND Vp > 35 AND D < 20 → Verde 15s\","
-                            "\"CONGESTION\":\"Q > 10 OR Vp < 20 → Rojo 45s\","
-                            "\"ALTA_DENSIDAD\":\"D > 30 → Verde extendido 60s\","
-                            "\"MODERADO\":\"resto de casos → Verde 30s\""
-                            "}"
-                            "}";
+                "\"reglas\":{"
+                "\"NORMAL\":\"Q < 5 AND Vp > 35 AND D < 20 -> Verde 15s\","
+                "\"CONGESTION\":\"Q > 10 OR Vp < 20 -> Rojo 45s\","
+                "\"ALTA_DENSIDAD\":\"D > 30 -> Verde extendido 60s\","
+                "\"MODERADO\":\"resto de casos -> Verde 30s\""
+                "}"
+                "}";
             }
             else
             {
